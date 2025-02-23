@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    environment {
+        AWS_ACCOUNT_ID = credentials('ACCOUNTID')
+        AWS_DEFAULT_REGION="us-east-1"     
+    }
+        
+    stages {
+        stage('Infrastructure Deployment') {
+           environment {
+             AWS_ACCESS_KEY_ID = credentials('ACCESSkey')
+             AWS_SECRET_ACCESS_KEY = credentials('SECRETkey')
+           }
+           steps {
+              script {
+                  sh "terraform init"
+                  sh "terraform validate"
+                  sh "terraform plan"
+                  sh "terraform ${action} --auto-approve"
+            }
+        }
+               
+     }
+    }
+    
+}
