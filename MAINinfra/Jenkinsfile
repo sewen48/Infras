@@ -13,10 +13,10 @@ pipeline {
            }
            steps {
               script {
-                  sh "terraform init"
-                  sh "terraform validate"
-                  sh "terraform plan"
-                  sh "terraform ${action} --auto-approve"
+                  sh "cd MAINinfra && terraform init"
+                  sh "cd MAINinfra && terraform validate"
+                  sh "cd MAINinfra && terraform plan"
+                  sh "cd MAINinfra && terraform ${action} --auto-approve"
             }
         }
                
