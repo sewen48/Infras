@@ -5,7 +5,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "customvpcT-bucket"
+    bucket = "customvpct-bucket"
     key    = "infra/terraform.tfstate"
     region = "us-east-1"
   }
